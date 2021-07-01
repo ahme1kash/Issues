@@ -128,7 +128,16 @@ const AllIssues = () => {
                             <StyledTableCell align="center">
                                 <ButtonGroup>
                                 <Button style={{ color: "#1C8D73" }} component={Link} to={`/editissues/${issue._id}`}> <i class="far fa-edit"></i></Button>
-                                <Button onClick={() => deleteIssueData(issue._id)} style={{ color: "#B4161B" }}><i class="far fa-trash-alt"></i></Button>
+                                <Button onClick={() => {
+                                    const confirmBox = window.confirm(
+                                        "Do you really want to delete this issue?"
+                                      )
+                                      if (confirmBox === true) {
+                                        deleteIssueData(issue._id)
+                                    
+                                      }
+                                }} 
+                                    style={{ color: "#B4161B" }}><i class="far fa-trash-alt"></i></Button>
                                 </ButtonGroup>
                             </StyledTableCell>
                         </StyledTableRow>
